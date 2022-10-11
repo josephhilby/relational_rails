@@ -25,7 +25,7 @@ This was the initial rails project given to me while at the Turing School of Sof
 ## Roadmap
 
 * [ ] Iteration ONE
-    * [ ] User Story 1
+    * [x] User Story 1
     * [ ] User Story 2
     * [ ] User Story 3
     * [ ] User Story 4

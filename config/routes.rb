@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
   get '/seasons', to: 'seasons#index'
+  post '/seasons', to: 'seasons#create'
+
+  get '/seasons/new', to: 'seasons#new'
 end
