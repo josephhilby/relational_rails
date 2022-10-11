@@ -1,2 +1,7 @@
-<a href="/">Home</a>
+<a href="/">Home</a><br>
+<a href="/seasons/new">New Season</a>
 <h1>All Seasons</h1>
+
+<% @seasons.each do |season| %>
+<h3><%= season[:year] %></h3>
+<% end %>
