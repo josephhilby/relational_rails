@@ -1,0 +1,15 @@
+<a href="/">Home</a>
+<form action="/seasons" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter a new season:</p>
+  <label for='season[year]'>Year:</label>
+  <input type="number" name="season[year]" min="1900" max="2099" step="1" value="2022" /><br>
+  <label for='season[biggest_storm]'>Biggest named storm:</label>
+  <input type='text' name='season[biggest_storm]'/><br>
+  <label for="season[fema_state_emg]">Was a FEMA State of Emergency declared?</label>
+  <select name="season[fema_state_emg]">
+    <option value='true'>Yes</option>
+    <option value='false'>No</option>
+  </select><br>
+  <input type='submit'/>
+</form>

@@ -1,0 +1,9 @@
+<a href="/seasons">Seasons List</a>
+
+<h1><%= @season.year %> Hurricane Season:</h1>
+<p>The biggest storm that year was: <%= @season.biggest_storm %></p>
+<% if @season.fema_state_emg == true %>
+<p><%= 'FEMA declared a State of Emergency that year' %></p>
+<% else %>
+<p><%= 'FEMA did not declare a State of Emergency that year' %></p>
+<% end %>
