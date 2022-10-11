@@ -20,4 +20,8 @@ class SeasonsController < ApplicationController
     season.save
     redirect_to '/seasons'
   end
+
+  def show
+    @season = Season.find(params[:id])
+  end
 end
