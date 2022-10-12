@@ -1,19 +1,19 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# RSpec.describe 'On the tested page' do
-#   # As a visitor
-#   # When I visit /URI
-#   # Then I see
-#   describe 'As a visitor' do
-#     describe 'When I visit /URI' do
-#       it 'Then I see' do
-#         model = Model.create!(column: "Value", [...])
-#         model_2 = model_many.model_belong.create!(column: "Value", [...])
-#         visit “URI/#{model.id}”
-#         Save_and_open_page # requires launchy gem
-#         expect(page).to have_content(model.column)
-#         expect(page).to_not have_content("Thing #{model_2.column}")
-#       end
-#     end
-#   end
-# end
+RSpec.describe 'On the index page' do
+  # As a visitor
+  # When I visit '/seasons'
+  # Then I see the name (year) of each season record in the system
+  describe 'As a visitor' do
+    describe 'When I visit /seasons' do
+      it 'Then I see the name of each season record in the system' do
+        season_1 = Season.create!(year: 2022, biggest_storm: "Ian", fema_state_emg: true)
+        season_2 = Season.create!(year: 2021, biggest_storm: "Sam", fema_state_emg: false)
+        visit "/seasons"
+        save_and_open_page
+        expect(page).to have_content(season_1.year)
+        expect(page).to have_content(season_2.year)
+      end
+    end
+  end
+end
