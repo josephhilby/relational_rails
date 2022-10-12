@@ -1,0 +1,2 @@
+class Storm < ApplicationRecord
+end
