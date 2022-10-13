@@ -11,7 +11,7 @@ RSpec.describe 'On the seasons storms index page' do
         storm_1 = season.storms.create!(storm_type: "Hurricane", landfall: false, wind_spd: 155, name: "Sam")
         storm_2 = season.storms.create!(storm_type: "Hurricane", landfall: true, wind_spd: 154, name: "Ian")
         visit "/seasons/#{season.id}/storms"
-        save_and_open_page
+
         expect(page).to have_content("All Storms in the #{season.year} Hurricane Season")
         expect(page).to have_content(storm_1.name)
         expect(page).to have_content(storm_1.storm_type)
