@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 RSpec.describe 'On the seasons index page' do
 # As a visitor
 # When I visit /seasons
@@ -17,3 +18,4 @@ RSpec.describe 'On the seasons index page' do
     end
   end
 end
+
