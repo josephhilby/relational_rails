@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_10_223944) do
+ActiveRecord::Schema.define(version: 2022_10_12_204317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2022_10_10_223944) do
     t.boolean "fema_state_emg"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "storms", force: :cascade do |t|
+    t.string "storm_type"
+    t.boolean "landfall"
+    t.integer "wind_spd"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "name"
   end
 
 end

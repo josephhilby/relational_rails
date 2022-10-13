@@ -1,0 +1,14 @@
+<a href="/">Home</a>
+<form action="/storms" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Enter a new storm:</p>
+  <label for='storm[name]'>Storm Name:</label>
+  <label for='storm[storm_type]'>Storm Type:</label>
+  <input type="number" name="storm[wind_spd]" min="1" max="999" step="1" value="100" /><br>
+  <label for="storm[landfall]">Did the storm make landfall in the US?</label>
+  <select name="storm[landfall]">
+    <option value='true'>Yes</option>
+    <option value='false'>No</option>
+  </select><br>
+  <input type='submit'/>
+</form>

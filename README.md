@@ -27,8 +27,8 @@ This was the initial rails project given to me while at the Turing School of Sof
 * [ ] Iteration ONE
     * [x] User Story 1
     * [x] User Story 2
-    * [ ] User Story 3
-    * [ ] User Story 4
+    * [x] User Story 3
+    * [x] User Story 4
     * [ ] User Story 5
     * [ ] User Story 6
     * [ ] User Story 7

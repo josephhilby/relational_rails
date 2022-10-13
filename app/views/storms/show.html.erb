@@ -1,0 +1,9 @@
+<a href="/storms">Storms List</a>
+
+<h1><%= "#{@storm.storm_type} #{@storm.name}" %></h1>
+<p>Maximum Sustained Winds: <%= @storm.wind_spd %> mph</p>
+<% if @storm.landfall == true %>
+<p><%= "#{@storm.storm_type} #{@storm.name} did make landfall in the US" %></p>
+<% else %>
+<p><%= "#{@storm.storm_type} #{@storm.name} did not make landfall in the US" %></p>
+<% end %>
