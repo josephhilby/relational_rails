@@ -10,7 +10,7 @@ RSpec.describe 'On the storms index page' do
         storm_1 = Storm.create!(storm_type: "Hurricane", landfall: false, wind_spd: 155, name: "Sam")
         storm_2 = Storm.create!(storm_type: "Hurricane", landfall: true, wind_spd: 155, name: "Ian")
         visit "/storms"
-        save_and_open_page
+
         expect(page).to have_content(storm_1.name)
         expect(page).to have_content(storm_1.storm_type)
         expect(page).to have_content(storm_1.wind_spd)

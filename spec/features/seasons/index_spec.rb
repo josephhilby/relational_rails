@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'On the seasons index page' do
-  # As a visitor
-  # When I visit '/seasons'
-  # Then I see the name (year) of each season record in the system
+# As a visitor
+# When I visit /seasons
+# Then I see the name (year) of each season record in the system
   describe 'As a visitor' do
     describe 'When I visit /seasons' do
       it 'Then I see the name of each season record in the system' do

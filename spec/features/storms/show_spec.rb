@@ -1,26 +1,24 @@
-# As a visitor
-# When I visit '/child_table_name/:id'
-# Then I see the child with that id including the child's attributes
-# (data from each column that is on the child table)
+require 'rails_helper'
 
-# RSpec.describe 'On the show page' do
-#   # As a visitor
-#   # When I visit '/parents/:id'
-#   # Then I see the parent with that id including the parent's attributes
-#   describe 'As a visitor' do
-#     describe 'When I visit /seasons/:id' do
-#       it 'Then I see the season with that id including the seasons attributes' do
-#         season_1 = Season.create!(year: 2022, biggest_storm: "Ian", fema_state_emg: true)
-#         season_2 = Season.create!(year: 2021, biggest_storm: "Sam", fema_state_emg: false)
-#         visit "/seasons/#{season_1.id}"
-#         save_and_open_page
-#         expect(page).to have_content(season_1.year)
-#         expect(page).to have_content(season_1.biggest_storm)
-#         expect(page).to have_content('FEMA declared')
-#         expect(page).to_not have_content(season_2.year)
-#         expect(page).to_not have_content(season_2.biggest_storm)
-#         expect(page).to_not have_content('FEMA did not declare')
-#       end
-#     end
-#   end
-# end
+RSpec.describe 'On the storms show page' do
+# As a visitor
+# When I visit /storms/:id
+# Then I see the storm with that id including the storms attributesattributes
+  describe 'As a visitor' do
+    describe 'When I visit /storms/:id' do
+      it 'Then I see the storm with that id including the storms attributesattributes' do
+        storm_1 = Storm.create!(storm_type: "Hurricane", landfall: false, wind_spd: 155, name: "Sam")
+        storm_2 = Storm.create!(storm_type: "Hurricane", landfall: true, wind_spd: 154, name: "Ian")
+        visit "/storms/#{storm_1.id}"
+        save_and_open_page
+
+        expect(page).to have_content("#{storm_1.storm_type} #{storm_1.name}")
+        expect(page).to have_content("#{storm_1.wind_spd} mph")
+        expect(page).to have_content('Hurricane Sam did not make landfall in the US')
+        expect(page).to_not have_content("#{storm_2.storm_type} #{storm_2.name}")
+        expect(page).to_not have_content(storm_2.wind_spd)
+        expect(page).to_not have_content('Hurrican Ian did made landfall in the US')
+      end
+    end
+  end
+end
