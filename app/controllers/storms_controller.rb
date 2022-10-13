@@ -1,6 +1,6 @@
 class StormsController < ApplicationController
   def index
-    @storms = Storm.all
+    @storms = Storm.all.reverse
   end
 
   def new
