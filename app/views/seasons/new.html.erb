@@ -1,4 +1,12 @@
-<a href="/">Home</a>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/seasons">Seasons List</a></li>
+  <li><a href="/seasons/new">New Season</a></li>
+  <li><a href="/storms">Storms List</a></li>
+  <li><a href="/storms/new">New Storm</a></li>
+</ul>
+
+<h1>New Season</h1>
 <form action="/seasons" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <p>Enter a new season:</p>
@@ -11,5 +19,5 @@
     <option value='true'>Yes</option>
     <option value='false'>No</option>
   </select><br>
-  <input type='submit'/>
+  <input type='submit' value="Create Season"/>
 </form>
