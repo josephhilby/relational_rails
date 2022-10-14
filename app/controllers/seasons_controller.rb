@@ -23,5 +23,7 @@ class SeasonsController < ApplicationController
 
   def show
     @season = Season.find(params[:id])
+    @id = params[:id]
+    @storms = @season.storms_counter
   end
 end
