@@ -37,7 +37,7 @@ This was the initial rails project given to me while at the Turing School of Sof
     * [x] User Story 10
 * [ ] Iteration TWO
     * [x] User Story 11
-    * [ ] User Story 12
+    * [x] User Story 12
     * [ ] User Story 13
     * [ ] User Story 14
     * [ ] User Story 15

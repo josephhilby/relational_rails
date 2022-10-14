@@ -28,7 +28,7 @@ class SeasonsController < ApplicationController
   end
 
   def edit
-    @seasons = Season.find(params[:id])
+    @season = Season.find(params[:id])
   end
 
   def update
@@ -43,6 +43,6 @@ class SeasonsController < ApplicationController
       fema_state_emg: fema_state_emg
     })
     season.save
-    redirect_to "/seasons/#{storm.id}"
+    redirect_to "/seasons/#{season.id}"
   end
 end

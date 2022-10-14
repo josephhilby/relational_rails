@@ -18,8 +18,8 @@ RSpec.describe 'Seasons Update Page' do
     end
 
     describe 'When I fill out the form click the button "Update Season"' do
-      xit '1) I am taken to /seasons' do
-        visit "/seasons/:id/edit"
+      it '1) I am taken to /seasons' do
+        visit "/seasons/#{@season_22.id}/edit"
         fill_in "season[year]", with: 2099
         fill_in "season[biggest_storm]", with: 'A big storm'
         select('No', from: 'season[fema_state_emg]')
