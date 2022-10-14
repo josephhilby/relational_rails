@@ -6,26 +6,26 @@
   <li><a href="/storms/new">New Storm</a></li>
 </ul>
 
-<h1>New Storm</h1>
+<h1>Update <%= "#{@storm.storm_type} #{@storm.name}" %></h1>
 <form action="/storms" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Enter a new storm:</p>
+  <input type="hidden" name="_method" value="PATCH"/>
   <label for='storm[season_id]'>Storm Season:</label>
   <select name="storm[season_id]">
     <% @seasons.each do |season| %>
-    <option value=<%="#{season.year}"%>><%="#{season.year}"%></option>
+    <option value=<%="#{season.year}"%>><%="#{@storm.year}"%></option>
     <% end %>
   </select><br>
   <label for='storm[name]'>Storm Name:</label>
-  <input type='text' name='storm[name]'/><br>
+  <input type='text' name='storm[name]' value=<%="#{@storm.name}"%>/><br>
   <label for='storm[storm_type]'>Storm Type:</label>
-  <input type='text' name='storm[storm_type]'/><br>
+  <input type='text' name='storm[storm_type]' value=<%="#{@storm.storm_type}"%>/><br>
   <label for='storm[wind_spd]'>Storm Wind Speed:</label>
-  <input type="number" name="storm[wind_spd]" min="1" max="999" step="1" value="100" /><br>
+  <input type="number" name="storm[wind_spd]" min="1" max="999" step="1" value=<%="#{@storm.wind_spd}"%> /><br>
   <label for="storm[landfall]">Did the storm make landfall in the US?</label>
-  <select name="storm[landfall]">
+  <select name="storm[landfall]" value=<%= if @storm.landfall == true then "Yes" else "No" end %>>
     <option value='true'>Yes</option>
     <option value='false'>No</option>
   </select><br>
-  <input type='submit' value="Create Storm"/>
+  <input type='submit'value="Update Storm"/>
 </form>

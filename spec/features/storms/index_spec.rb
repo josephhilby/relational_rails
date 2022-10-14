@@ -30,8 +30,6 @@ RSpec.describe 'Storms Index Page' do
         expect(page).to have_content("#{@storm_1.created_at}")
         expect(page).to have_content("#{@storm_2.created_at}")
       end
-
-      it '4) '
     end
   end
 end
