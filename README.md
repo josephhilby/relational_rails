@@ -24,19 +24,19 @@ This was the initial rails project given to me while at the Turing School of Sof
 <!-- ROADMAP -->
 ## Roadmap
 
-* [ ] Iteration ONE
+* [x] Iteration ONE
     * [x] User Story 1
     * [x] User Story 2
     * [x] User Story 3
     * [x] User Story 4
     * [x] User Story 5
-    * [ ] User Story 6
-    * [ ] User Story 7
-    * [ ] User Story 8
-    * [ ] User Story 9
-    * [ ] User Story 10
+    * [x] User Story 6
+    * [x] User Story 7
+    * [x] User Story 8
+    * [x] User Story 9
+    * [x] User Story 10
 * [ ] Iteration TWO
-    * [ ] User Story 11
+    * [x] User Story 11
     * [ ] User Story 12
     * [ ] User Story 13
     * [ ] User Story 14
