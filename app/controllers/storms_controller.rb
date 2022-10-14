@@ -4,6 +4,7 @@ class StormsController < ApplicationController
   end
 
   def new
+    @seasons = Season.all
   end
 
   def create

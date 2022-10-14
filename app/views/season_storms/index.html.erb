@@ -1,9 +1,14 @@
-<a href="/">Home</a><br>
-<a href="/storms/new">New Storm</a>
-<h1>All Storms in the <%= @season.year %> Hurricane Season</h1>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/seasons">Seasons List</a></li>
+  <li><a href="/seasons/new">New Season</a></li>
+  <li><a href="/storms">Storms List</a></li>
+  <li><a href="/storms/new">New Storm</a></li>
+</ul>
 
+<h1>All Storms in the <%= @season.year %> Hurricane Season:</h1>
 <% @storms.each do |storm| %>
-  <h3><a href='storms/<%= storm.id %>'><%= "#{storm[:storm_type]} #{storm[:name]}"%></a></h3>
+  <h3><a href='/storms/<%= storm[:id] %>'><%= "#{storm[:storm_type]} #{storm[:name]}"%></a></h3>
   <p> Peak winds: <%= storm[:wind_spd] %> </p>
   <% if storm.landfall == true %>
     <p><%= "#{storm[:storm_type]} #{storm[:name]} made landfall" %></p>

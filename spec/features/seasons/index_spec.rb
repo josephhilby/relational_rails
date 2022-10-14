@@ -1,19 +1,31 @@
 require 'rails_helper'
 
 
-RSpec.describe 'On the seasons index page' do
-# As a visitor
-# When I visit /seasons
-# Then I see the name (year) of each season record in the system
-  describe 'As a visitor' do
-    describe 'When I visit /seasons' do
-      it 'Then I see the name of each season record in the system' do
+RSpec.describe 'Seasons Index Page' do
+  describe 'When I visit /seasons' do
+    describe 'Then I see' do
+      it '1) The name of each season record in the system' do
         season_1 = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
         season_2 = Season.create!(year: 2022, biggest_storm: "Sam", fema_state_emg: false)
         visit "/seasons"
 
         expect(page).to have_content(season_1.year)
         expect(page).to have_content(season_2.year)
+      end
+
+      it '2) A link to create a new Seasons record, "New Season"' do
+        visit "/seasons"
+
+        expect(page).to have_content("New Season")
+      end
+    end
+
+    describe 'When I click "New Season"' do
+      it '1) I am taken to /seasons/new' do
+        visit "/seasons"
+        click_on "New Season"
+
+        expect(current_path).to eq("/seasons/new")
       end
     end
   end
