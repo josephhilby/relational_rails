@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   post '/seasons', to: 'seasons#create'
   get '/seasons/new', to: 'seasons#new'
   get '/seasons/:id', to: 'seasons#show'
+  patch '/seasons/:id', to: 'seasons#update'
+  get '/seasons/:id/edit', to: 'seasons#edit'
+
   get '/seasons/:id/storms', to: 'season_storms#index'
 
   get '/storms', to: 'storms#index'
