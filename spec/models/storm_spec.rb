@@ -5,7 +5,8 @@ RSpec.describe Storm, type: :model do
 
   # describe 'In Storm Model' do
   #   describe '#method' do
-  #     it 'Will...'
+  #     it 'Will...' do
+  #     end
   #   end
   # end
 end
