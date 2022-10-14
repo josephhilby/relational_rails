@@ -32,6 +32,20 @@ RSpec.describe 'Seasons Show Page' do
 
         expect(current_path).to eq("/seasons/#{@season_21.id}/storms")
       end
+
+      it '4) A link to update that season "Update Season"' do
+        visit "/seasons/#{@season_21.id}"
+
+        expect(page).to have_content("Update Season")
+      end
+    end
+
+    describe 'When I click "Update Season"' do
+      it '1) I am taken to /seasons/:id/edit' do
+        visit "/seasons/#{@season_21.id}"
+
+        expect(current_path).to eq("/seasons/#{@season_21.id}/edit")
+      end
     end
   end
 end
