@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe 'Seasons Index Page' do
   describe 'When I visit /seasons' do
     describe 'Then I see' do
