@@ -25,7 +25,7 @@ RSpec.describe 'Season_Storms Index Page' do
       it '2) A link to add a new storm for that season "Create Storm"' do
         season = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
         visit "/seasons/#{season.id}/storms"
-        save_and_open_page
+
         expect(page).to have_content("Create Storm")
       end
     end

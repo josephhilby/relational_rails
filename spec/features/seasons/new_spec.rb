@@ -25,8 +25,8 @@ RSpec.describe 'Seasons New Page' do
         fill_in "season[year]", with: 2010
         fill_in "season[biggest_storm]", with: 'A big storm'
         select('No', from: 'season[fema_state_emg]')
-        click_on "Create Season"
 
+        click_on "Create Season"
         expect(page).to have_content("2010")
       end
     end

@@ -8,5 +8,5 @@
 
 <h1>Seasons List:</h1>
 <% @seasons.each do |season| %>
-<h3><a href='seasons/<%= season.id %>'><%= season[:year] %></a></h3>
+<h3><a href='seasons/<%= season[:id] %>'><%= "#{season[:year]}" %></a></h3>
 <% end %>

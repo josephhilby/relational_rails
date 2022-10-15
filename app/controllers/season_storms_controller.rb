@@ -5,7 +5,7 @@ class SeasonStormsController < ApplicationController
   end
 
   def new
-    @seasons = Season.all
+    @season = Season.find(params[:id])
   end
 
   def create
@@ -15,13 +15,13 @@ class SeasonStormsController < ApplicationController
       landfall = false
     end
     season = Storm.new({
-      year: params[:storm][:name],
-      wind_spd: params[:storm][:wind_spd],
+      storm_type: params[:storm][:storm_type],
       landfall: landfall,
+      wind_spd: params[:storm][:wind_spd],
       name: params[:storm][:name],
       season_id: params[:storm][:season_id]
     })
     season.save
-    redirect_to '/seasons/:id/storms'
+    redirect_to "/seasons/#{params[:storm][:season_id]}/storms"
   end
 end
