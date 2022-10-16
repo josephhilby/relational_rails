@@ -38,8 +38,8 @@ This was the initial rails project given to me while at the Turing School of Sof
 * [ ] Iteration TWO
     * [x] User Story 11
     * [x] User Story 12
-    * [ ] User Story 13
-    * [ ] User Story 14
+    * [x] User Story 13
+    * [x] User Story 14
     * [ ] User Story 15
     * [ ] User Story 16
     * [ ] User Story 17
