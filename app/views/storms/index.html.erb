@@ -1,11 +1,3 @@
-<ul>
-  <li><a href="/">Home</a></li>
-  <li><a href="/seasons">Seasons List</a></li>
-  <li><a href="/seasons/new">New Season</a></li>
-  <li><a href="/storms">Storms List</a></li>
-  <li><a href="/storms/new">New Storm</a></li>
-</ul>
-
 <h1>Storms List:</h1>
 <% @storms.each do |storm| %>
   <h3><a href='storms/<%= storm[:id] %>'><%= "#{storm[:storm_type]} #{storm[:name]}"%></a> <h4>Created: <%= "#{storm.created_at}" %></h4></h3>
