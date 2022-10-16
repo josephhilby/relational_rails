@@ -1,11 +1,3 @@
-<ul>
-  <li><a href="/">Home</a></li>
-  <li><a href="/seasons">Seasons List</a></li>
-  <li><a href="/seasons/new">New Season</a></li>
-  <li><a href="/storms">Storms List</a></li>
-  <li><a href="/storms/new">New Storm</a></li>
-</ul>
-
 <h1>Update Hurricane Season <%= @season.year %></h1>
 <form action="/seasons/<%= @season.id %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
