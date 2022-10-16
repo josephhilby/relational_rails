@@ -1,6 +1,6 @@
 class StormsController < ApplicationController
   def index
-    @storms = Storm.all.reverse
+    @storms = Storm.where(landfall: true).reverse
   end
 
   def show
