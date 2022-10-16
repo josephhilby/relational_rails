@@ -17,6 +17,12 @@ RSpec.describe 'Storms Show Page' do
         expect(page).to_not have_content(storm_2.wind_spd)
         expect(page).to_not have_content('Hurrican Ian did made landfall in the US')
       end
+
+      it '2) A link to update that storm "Update Storm"'
+    end
+
+    describe 'When I click "Update Storm"' do
+      it '1) I am taken to /seasons/:id/edit'
     end
   end
 end
