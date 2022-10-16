@@ -25,7 +25,7 @@ RSpec.describe 'Seasons Update Page' do
         select('No', from: 'season[fema_state_emg]')
         click_on "Update Season"
 
-        expect(current_path).to eq("/seasons/#{Season.last[:id]}")
+        expect(current_path).to eq("/seasons/#{@season_22[:id]}")
       end
 
       it '2) And I see the seasons updated info' do
