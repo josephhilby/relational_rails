@@ -7,17 +7,12 @@
 </ul>
 
 <h1>New Storm</h1>
-<form action="/storms" method="POST">
+<form action="/seasons/<%= @season.id %>/storms" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Enter a new storm:</p>
-  <label for='storm[season_id]'>Storm Season:</label>
-  <select name="storm[season_id]">
-    <% @seasons.each do |season| %>
-    <option value=<%="#{season.year}"%>><%="#{season.year}"%></option>
-    <% end %>
-  </select><br>
+  <input type="hidden" id="storm[season_id]" name="storm[season_id]" value="<%= @season.id %>">
+  <p>Enter a new storm for the <%= @season.year %> Season:</p>
   <label for='storm[name]'>Storm Name:</label>
-  <input type='text' name='storm[name]'/><br>
+  <input type='text' id="storm[name]" name='storm[name]'/><br>
   <label for='storm[storm_type]'>Storm Type:</label>
   <input type='text' name='storm[storm_type]'/><br>
   <label for='storm[wind_spd]'>Storm Wind Speed:</label>

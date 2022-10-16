@@ -21,6 +21,23 @@ RSpec.describe 'Season_Storms Index Page' do
         expect(page).to have_content(storm_2.wind_spd)
         expect(page).to have_content('Ian made landfall')
       end
+
+      it '2) A link to add a new storm for that season "Create Storm"' do
+        season = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
+        visit "/seasons/#{season.id}/storms"
+
+        expect(page).to have_content("Create Storm")
+      end
+    end
+
+    describe 'When I click "Create Storm' do
+      it '1) I am taken to /seasons/:id/storms/new' do
+        season = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
+        visit "/seasons/#{season.id}/storms"
+        click_on "Create Storm"
+
+        expect(current_path).to eq("/seasons/#{season.id}/storms/new")
+      end
     end
   end
 end

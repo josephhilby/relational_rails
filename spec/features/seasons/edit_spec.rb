@@ -18,7 +18,17 @@ RSpec.describe 'Seasons Update Page' do
     end
 
     describe 'When I fill out the form click the button "Update Season"' do
-      it '1) I am taken to /seasons' do
+      it '1) I am taken to /seasons/:id' do
+        visit "/seasons/#{@season_22.id}/edit"
+        fill_in "season[year]", with: 2099
+        fill_in "season[biggest_storm]", with: 'A big storm'
+        select('No', from: 'season[fema_state_emg]')
+        click_on "Update Season"
+
+        expect(current_path).to eq("/seasons/#{@season_22[:id]}")
+      end
+
+      it '2) And I see the seasons updated info' do
         visit "/seasons/#{@season_22.id}/edit"
         fill_in "season[year]", with: 2099
         fill_in "season[biggest_storm]", with: 'A big storm'
@@ -26,6 +36,7 @@ RSpec.describe 'Seasons Update Page' do
         click_on "Update Season"
 
         expect(page).to have_content("2099")
+        expect(page).to have_content("A big storm")
       end
     end
   end

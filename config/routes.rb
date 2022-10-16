@@ -4,16 +4,20 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index'
 
   get '/seasons', to: 'seasons#index'
-  post '/seasons', to: 'seasons#create'
   get '/seasons/new', to: 'seasons#new'
+  post '/seasons', to: 'seasons#create'
+
   get '/seasons/:id', to: 'seasons#show'
-  patch '/seasons/:id', to: 'seasons#update'
   get '/seasons/:id/edit', to: 'seasons#edit'
+  patch '/seasons/:id', to: 'seasons#update'
 
   get '/seasons/:id/storms', to: 'season_storms#index'
+  get '/seasons/:id/storms/new', to: 'season_storms#new'
+  post '/seasons/:id/storms', to: 'season_storms#create'
 
   get '/storms', to: 'storms#index'
-  post '/storms', to: 'storms#create'
-  get '/storms/new', to: 'storms#new'
   get '/storms/:id', to: 'storms#show'
+
+  get '/storms/:id/edit', to: 'storms#edit'
+  patch '/storms/:id', to: 'storms#update'
 end
