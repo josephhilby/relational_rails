@@ -1,10 +1,24 @@
 <h1>Storms List:</h1>
+
+<table>
+  <tr>
+    <th> Storm Type </th>
+    <th> Storm Name </th>
+    <th> Peak Winds </th>
+    <th> Landfall </th>
+    <th> Created At </th>
+  </tr>
 <% @storms.each do |storm| %>
-  <h3><a href='storms/<%= storm[:id] %>'><%= "#{storm[:storm_type]} #{storm[:name]}"%></a> <h4>Created: <%= "#{storm.created_at}" %></h4></h3>
-  <p> Peak winds: <%= storm[:wind_spd] %> </p>
+  <tr>
+    <td><%= storm[:storm_type]  %></td>
+    <td><a href='storms/<%= storm[:id] %>'><%= storm[:name]%></a></td>
+    <td><%= storm[:wind_spd] %></td>
   <% if storm.landfall == true %>
-    <p><%= "#{storm[:storm_type]} #{storm[:name]} made landfall" %></p>
-    <% else %>
-    <p><%= "#{storm[:storm_type]} #{storm[:name]} did not make landfall" %></p>
+    <td>Made landfall</td>
+  <% else %>
+    <td>Did not make landfall</td>
   <% end %>
+    <td><%= storm[:created_at] %></td>
+  </tr>
 <% end %>
+</table>

@@ -1,7 +1,6 @@
 class SeasonsController < ApplicationController
   def index
     seasons = Season.all
-    # binding.pry
     @seasons = seasons.order(params[:sort])
   end
 
