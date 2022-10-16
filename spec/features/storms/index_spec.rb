@@ -13,22 +13,22 @@ RSpec.describe 'Storms Index Page' do
     describe 'Then I see' do
       it '1) Each storm that made landfall in the system including its attributes' do
         expect(page).to_not have_content(@storm_1.name)
-        expect(page).to_not have_content('Sam did not make landfall')
+        expect(page).to_not have_content('Did not make landfall')
 
         expect(page).to have_content(@storm_2.name)
         expect(page).to have_content(@storm_2.storm_type)
         expect(page).to have_content(@storm_2.wind_spd)
-        expect(page).to have_content('Ian made landfall')
+        expect(page).to have_content('Made landfall')
 
         expect(page).to have_content(@storm_3.name)
         expect(page).to have_content(@storm_3.storm_type)
         expect(page).to have_content(@storm_3.wind_spd)
-        expect(page).to have_content('Ian made landfall')
+        expect(page).to have_content('Made landfall')
       end
 
       it '2) Each storm record ordered by most recently created first (top)' do
         save_and_open_page
-        expect("Hurricane #{@storm_3.name}").to appear_before("Hurricane #{@storm_2.name}")
+        expect("#{@storm_3.name}").to appear_before("#{@storm_2.name}")
       end
 
       it '3) I see when each storm was created' do
