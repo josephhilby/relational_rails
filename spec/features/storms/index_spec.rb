@@ -27,13 +27,24 @@ RSpec.describe 'Storms Index Page' do
       end
 
       it '2) Each storm record ordered by most recently created first (top)' do
-        save_and_open_page
         expect("#{@storm_3.name}").to appear_before("#{@storm_2.name}")
       end
 
       it '3) I see when each storm was created' do
         expect(page).to have_content("#{@storm_2.created_at}")
         expect(page).to have_content("#{@storm_3.created_at}")
+      end
+
+      it '4) A link to update that season "Update Storm"' do
+        expect(page).to have_content("Update Storm")
+      end
+    end
+
+    describe 'When I click "Update Season"' do
+      it '1) I am taken to /storms/:id/edit' do
+        click_on "Update Storm"
+
+        expect(current_path).to eq("/storms/#{@storm_2.id}/edit")
       end
     end
   end

@@ -47,4 +47,10 @@ class SeasonsController < ApplicationController
     season.save
     redirect_to "/seasons/#{season.id}"
   end
+
+  def destroy
+    Storm.where(season_id: params[:id]).destroy_all
+    Season.destroy(params[:id])
+    redirect_to '/seasons'
+  end
 end

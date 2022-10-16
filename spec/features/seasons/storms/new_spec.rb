@@ -29,7 +29,6 @@ RSpec.describe 'Seasons Storms New Page' do
         fill_in "storm[storm_type]", with: 'Test Storm'
         fill_in "storm[wind_spd]", with: 999
         select('No', from: 'storm[landfall]')
-
         click_on "Create Storm"
 
         expect(current_path).to eq("/seasons/#{@season.id}/storms")
