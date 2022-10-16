@@ -34,6 +34,7 @@ RSpec.describe 'Seasons Storms New Page' do
 
         expect(current_path).to eq("/seasons/#{season.id}/storms")
       end
+
       it '2) A new storm record is created' do
         season = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
         visit "/seasons/#{season.id}/storms/new"

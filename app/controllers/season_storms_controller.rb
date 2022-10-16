@@ -9,7 +9,7 @@ class SeasonStormsController < ApplicationController
   end
 
   def create
-    if params[:storm][:landfall] == true
+    if params[:storm][:landfall] == 'true'
       landfall = true
     else
       landfall = false
