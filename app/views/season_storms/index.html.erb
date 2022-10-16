@@ -1,11 +1,25 @@
 <h1>All Storms in the <%= @season.year %> Hurricane Season:</h1>
+
+<table>
+  <tr>
+    <th><%= link_to "Storm Type", :sort => "storm_type"%></th>
+    <th><%= link_to "Storm Name", :sort => "name"%></th>
+    <th><%= link_to "Peak Winds", :sort => "wind_spd"%></th>
+    <th><%= link_to "Landfall", :sort => "landfall"%></th>
+    <th><%= link_to "Created At", :sort => "created_at"%></th>
+  </tr>
 <% @storms.each do |storm| %>
-  <h3><a href='/storms/<%= storm[:id] %>'><%= "#{storm[:storm_type]} #{storm[:name]}"%></a></h3>
-  <p> Peak winds: <%= storm[:wind_spd] %> </p>
+  <tr>
+    <td><%= storm[:storm_type]%></td>
+    <td><a href='/storms/<%= storm[:id] %>'><%= "#{storm[:name]}"%></a></td>
+    <td><%= storm[:wind_spd] %></td>
   <% if storm.landfall == true %>
-    <p><%= "#{storm[:storm_type]} #{storm[:name]} made landfall" %></p>
-    <% else %>
-    <p><%= "#{storm[:storm_type]} #{storm[:name]} did not make landfall" %></p>
+    <td>Made landfall</td>
+  <% else %>
+    <td>Did not make landfall</td>
   <% end %>
+    <td><%= storm[:created_at] %></td>
+  </tr>
 <% end %>
+</table>
 <p><a href="/seasons/<%= @season.id %>/storms/new">Create Storm</a></p>

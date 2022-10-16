@@ -1,6 +1,7 @@
 class SeasonsController < ApplicationController
   def index
-    @seasons = Season.all
+    seasons = Season.all
+    @seasons = seasons.order(params[:sort])
   end
 
   def new

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   patch '/seasons/:id', to: 'seasons#update'
 
   get '/seasons/:id/storms', to: 'season_storms#index'
+
   get '/seasons/:id/storms/new', to: 'season_storms#new'
   post '/seasons/:id/storms', to: 'season_storms#create'
 

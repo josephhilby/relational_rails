@@ -22,7 +22,7 @@ class StormsController < ApplicationController
     storm.update({
       storm_type: params[:storm][:storm_type],
       landfall: landfall,
-      wind_spd: params[:storm][:wind_spd],
+      wind_spd: params[:storm][:wind_spd].to_i,
       name: params[:storm][:name],
       season_id: params[:storm][:season_id]
     })
