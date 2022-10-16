@@ -8,21 +8,33 @@ RSpec.describe 'Season_Storms Index Page' do
         storm_1 = season.storms.create!(storm_type: "Hurricane", landfall: false, wind_spd: 155, name: "Sam")
         storm_2 = season.storms.create!(storm_type: "Hurricane", landfall: true, wind_spd: 154, name: "Ian")
         visit "/seasons/#{season.id}/storms"
-
+        save_and_open_page
         expect(page).to have_content("All Storms in the #{season.year} Hurricane Season")
 
         expect(page).to have_content(storm_1.name)
         expect(page).to have_content(storm_1.storm_type)
         expect(page).to have_content(storm_1.wind_spd)
-        expect(page).to have_content('Sam did not make landfall')
+        expect(page).to have_content('Did not make landfall')
 
         expect(page).to have_content(storm_2.name)
         expect(page).to have_content(storm_2.storm_type)
         expect(page).to have_content(storm_2.wind_spd)
-        expect(page).to have_content('Ian made landfall')
+        expect(page).to have_content('Made landfall')
       end
 
-      it '2) A link to add a new storm for that season "Create Storm"' do
+      it '2) A link to sort storms alphabeticaly' do
+        season = Season.create!(year: 2021, biggest_storm: "Andrew", fema_state_emg: true)
+        storm_1 = season.storms.create!(storm_type: "Hurricane", landfall: false, wind_spd: 155, name: "Bert")
+        storm_2 = season.storms.create!(storm_type: "Hurricane", landfall: true, wind_spd: 154, name: "Chris")
+        storm_3 = season.storms.create!(storm_type: "Hurricane", landfall: true, wind_spd: 180, name: "Andrew")
+        visit "/seasons/#{season.id}/storms"
+
+        click_on "Name"
+        expect(storm_3.name).to appear_before(storm_1.name)
+        expect(storm_1.name).to appear_before(storm_2.name)
+      end
+
+      it '3) A link to add a new storm for that season "Create Storm"' do
         season = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
         visit "/seasons/#{season.id}/storms"
 
