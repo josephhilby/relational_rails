@@ -8,7 +8,7 @@
 
 <h1>Storms List:</h1>
 <% @storms.each do |storm| %>
-  <h3><a href='storms/<%= storm.id %>'><%= "#{storm[:storm_type]} #{storm[:name]}"%></a> <h4>Created: <%= "#{storm.created_at}" %></h4></h3>
+  <h3><a href='storms/<%= storm[:id] %>'><%= "#{storm[:storm_type]} #{storm[:name]}"%></a> <h4>Created: <%= "#{storm.created_at}" %></h4></h3>
   <p> Peak winds: <%= storm[:wind_spd] %> </p>
   <% if storm.landfall == true %>
     <p><%= "#{storm[:storm_type]} #{storm[:name]} made landfall" %></p>

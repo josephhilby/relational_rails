@@ -18,11 +18,24 @@ RSpec.describe 'Storms Show Page' do
         expect(page).to_not have_content('Hurrican Ian did made landfall in the US')
       end
 
-      it '2) A link to update that storm "Update Storm"'
+      it '2) A link to update that storm "Update Storm"' do
+        season = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
+        storm_1 = season.storms.create!(storm_type: "Hurricane", landfall: false, wind_spd: 155, name: "Sam")
+        visit "/storms/#{storm_1.id}"
+
+        expect(page).to have_content("Update Storm")
+      end
     end
 
     describe 'When I click "Update Storm"' do
-      it '1) I am taken to /seasons/:id/edit'
+      it '1) I am taken to /storms/:id/edit' do
+        season = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
+        storm_1 = season.storms.create!(storm_type: "Hurricane", landfall: false, wind_spd: 155, name: "Sam")
+        visit "/storms/#{storm_1.id}"
+        click_on "Update Storm"
+
+        expect(current_path).to eq("/storms/#{storm_1.id}/edit")
+      end
     end
   end
 end

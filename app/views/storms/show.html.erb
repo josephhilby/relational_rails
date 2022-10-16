@@ -13,3 +13,4 @@
 <% else %>
 <p><%= "#{@storm.storm_type} #{@storm.name} did not make landfall in the US" %></p>
 <% end %>
+<p><a href='/storms/<%= @storm.id %>/edit'>Update Storm</a></p>

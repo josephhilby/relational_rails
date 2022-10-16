@@ -24,7 +24,7 @@ RSpec.describe 'Storms Update Page' do
         select('No', from: 'storm[landfall]')
         click_on "Update Storm"
 
-        expect(current_path).to have_content("/storms/#{Storm.last[:id]}")
+        expect(current_path).to eq("/storms/#{@storm_sam.id}")
       end
 
       it '2) And I see the storms updated info' do
