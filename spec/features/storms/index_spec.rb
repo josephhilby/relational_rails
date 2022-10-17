@@ -40,11 +40,12 @@ RSpec.describe 'Storms Index Page' do
       end
     end
 
-    describe 'When I click "Update Season"' do
+    describe 'When I click "Update Storm"' do
       it '1) I am taken to /storms/:id/edit' do
-        click_on "Update Storm"
 
-        expect(current_path).to eq("/storms/#{@storm_2.id}/edit")
+        click_on "Update Storm", match: :first
+
+        expect(current_path).to eq("/storms/#{@storm_3.id}/edit")
       end
     end
   end

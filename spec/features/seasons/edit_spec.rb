@@ -4,6 +4,7 @@ RSpec.describe 'Seasons Update Page' do
   describe 'When I visit /seasons/:id/edit' do
     before(:each) do
       @season_22 = Season.create!(year: 2022, biggest_storm: "Ian", fema_state_emg: true)
+
       @season_21 = Season.create!(year: 2021, biggest_storm: "Sam", fema_state_emg: true)
       @season_21.storms.create!(storm_type: "Hurricane", landfall: false, wind_spd: 155, name: "Sam")
       @season_21.storms.create!(storm_type: "Hurricane", landfall: true, wind_spd: 154, name: "Ian")

@@ -2,16 +2,16 @@ require 'rails_helper'
 
 RSpec.describe 'Seasons Index Page' do
   before(:each) do
-    @season_1 = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
-    @season_2 = Season.create!(year: 2022, biggest_storm: "Sam", fema_state_emg: false)
+    @season_21 = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
+    @season_22 = Season.create!(year: 2022, biggest_storm: "Sam", fema_state_emg: false)
   end
   describe 'When I visit /seasons' do
     describe 'Then I see' do
       it '1) The name of each season record in the system' do
         visit "/seasons"
 
-        expect(page).to have_content(@season_1.year)
-        expect(page).to have_content(@season_2.year)
+        expect(page).to have_content(@season_21.year)
+        expect(page).to have_content(@season_22.year)
       end
 
       it '2) A link to create a new Seasons record, "New Season"' do
@@ -24,7 +24,7 @@ RSpec.describe 'Seasons Index Page' do
         visit "/seasons"
 
         expect(page).to have_content("Update 2021 Season")
-        expect(page).to have_content("Update #{@season_2.year} Season")
+        expect(page).to have_content("Update #{@season_22.year} Season")
       end
     end
 
@@ -40,9 +40,9 @@ RSpec.describe 'Seasons Index Page' do
     describe 'When I click "Update Season"' do
       it '1) I am taken to /seasons/edit' do
         visit "/seasons"
-        click_on "Update 2021 Season"
+        click_on "Update 2022 Season"
 
-        expect(current_path).to eq("/seasons/#{@season_2[:id]}/edit")
+        expect(current_path).to eq("/seasons/#{@season_22[:id]}/edit")
       end
     end
   end
