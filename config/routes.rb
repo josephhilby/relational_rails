@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/seasons/:id/edit', to: 'seasons#edit'
   patch '/seasons/:id', to: 'seasons#update'
 
+  delete '/seasons/:id', to: 'seasons#destroy'
+
   get '/seasons/:id/storms', to: 'season_storms#index'
 
   get '/seasons/:id/storms/new', to: 'season_storms#new'

@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th> Storm Type </th>
-    <th> Storm Name </th>
+    <th> Type </th>
+    <th> Name </th>
     <th> Peak Winds </th>
     <th> Landfall </th>
     <th> Created At </th>
@@ -19,6 +19,7 @@
     <td>Did not make landfall</td>
   <% end %>
     <td><%= storm[:created_at] %></td>
+    <td><a href='/storms/<%= storm.id %>/edit'>Update Storm</a></td>
   </tr>
 <% end %>
 </table>

@@ -4,13 +4,12 @@
   <tr>
     <th><%= link_to "Year", :sort => "year"%></th>
     <th><%= link_to "Created At", :sort => "created_at"%></th>
-    <th>Update</th>
   </tr>
 <% @seasons.each do |season| %>
   <tr>
     <td><a href='seasons/<%= season[:id] %>'><%= "#{season[:year]}" %></a></td>
     <td><%= season[:created_at]%></td>
-    <td><a href="/seasons/<%= season[:id] %>/edit">Update <%= "#{season[:year]}" %>Season</a></td>
+    <td><a href="/seasons/<%= season[:id] %>/edit">Update <%= "#{season[:year]}" %> Season</a></td>
   </tr>
   <% end %>
 </table>

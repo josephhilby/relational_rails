@@ -8,3 +8,8 @@
 <p><%= 'FEMA did not declare a State of Emergency that year' %></p>
 <% end %>
 <p><a href="/seasons/<%= @id %>/edit">Update Season</a></p>
+<form action="/seasons/<%= @id %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete"/>
+</form>
