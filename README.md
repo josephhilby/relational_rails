@@ -40,12 +40,12 @@ This was the initial rails project given to me while at the Turing School of Sof
     * [x] User Story 12
     * [x] User Story 13
     * [x] User Story 14
-    * [ ] User Story 15
-    * [ ] User Story 16
-    * [ ] User Story 17
-    * [ ] User Story 18
-* [ ] Iteration THREE
-    * [ ] User Story 19
+    * [x] User Story 15
+    * [x] User Story 16
+    * [x] User Story 17
+    * [x] User Story 18
+* [x] Iteration THREE
+    * [x] User Story 19
     * [ ] User Story 20
     * [ ] User Story 21
     * [ ] User Story 22
