@@ -74,13 +74,6 @@ RSpec.describe 'Seasons Show Page' do
         expect(page).to_not have_content("#{@storm_ian[:name]}")
         expect(page).to_not have_content("#{@storm_sam[:name]}")
       end
-
-      it 'test' do
-        visit "/seasons"
-        save_and_open_page
-        visit "/storms"
-        save_and_open_page
-      end
     end
   end
 end

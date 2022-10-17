@@ -42,7 +42,7 @@ RSpec.describe 'Storms Index Page' do
 
     describe 'When I click "Update Storm"' do
       it '1) I am taken to /storms/:id/edit' do
-        save_and_open_page
+
         click_on "Update Storm", match: :first
 
         expect(current_path).to eq("/storms/#{@storm_3.id}/edit")
