@@ -59,7 +59,7 @@ RSpec.describe 'Seasons Index Page' do
       it '1) The season is deleted' do
         visit "/seasons"
         click_on "Delete Season", match: :first
-
+        save_and_open_page
         expect(current_path).to eq("/seasons")
         expect(page).to_not have_content("2021")
       end

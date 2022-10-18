@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'All Pages' do
   before(:all) do
-    @season_19 = Season.create!(year: 2019, biggest_storm: "Sam", fema_state_emg: true)
-    @storm_sam = @season_19.storms.create!(storm_type: "Hurricane", landfall: false, wind_spd: 155, name: "Sam")
+    @season_00 = Season.create!(year: 2000, biggest_storm: "Mike", fema_state_emg: true)
+    @storm_mike = @season_00.storms.create!(storm_type: "Hurricane", landfall: true, wind_spd: 155, name: "Mike")
   end
   describe 'When I visit:' do
     it '1) "/" then I see an unordered list of links for Home, Seasons, and Storms' do
@@ -33,28 +33,28 @@ RSpec.describe 'All Pages' do
     end
 
     it '4) "/seasons/:id" then I see an unordered list of links for Home, Seasons, and Storms' do
-      visit "/seasons/#{@season_19[:id]}"
+      visit "/seasons/#{@season_00[:id]}"
 
       expect(page).to have_content("Seasons List")
       expect(page).to have_content("Storms List")
     end
 
     it '5) "/seasons/:id/edit" then I see an unordered list of links for Home, Seasons, and Storms' do
-      visit "/seasons/#{@season_19[:id]}/edit"
+      visit "/seasons/#{@season_00[:id]}/edit"
 
       expect(page).to have_content("Seasons List")
       expect(page).to have_content("Storms List")
     end
 
     it '6) "/seasons/:id/storms" then I see an unordered list of links for Home, Seasons, and Storms' do
-      visit "/seasons/#{@season_19[:id]}/storms"
+      visit "/seasons/#{@season_00[:id]}/storms"
 
       expect(page).to have_content("Seasons List")
       expect(page).to have_content("Storms List")
     end
 
     it '7) "/seasons/:id/storms/new" then I see an unordered list of links for Home, Seasons, and Storms' do
-      visit "/seasons/#{@season_19[:id]}/storms/new"
+      visit "/seasons/#{@season_00[:id]}/storms/new"
 
       expect(page).to have_content("Seasons List")
       expect(page).to have_content("Storms List")
@@ -68,14 +68,14 @@ RSpec.describe 'All Pages' do
     end
 
     it '9) "/storms/:id" then I see an unordered list of links for Home, Seasons, and Storms' do
-      visit "/storms/#{@storm_sam[:id]}"
+      visit "/storms/#{@storm_mike[:id]}"
 
       expect(page).to have_content("Seasons List")
       expect(page).to have_content("Storms List")
     end
 
     it '10) "/storms/:id/edit" then I see an unordered list of links for Home, Seasons, and Storms' do
-      visit "/storms/#{@storm_sam[:id]}/edit"
+      visit "/storms/#{@storm_mike[:id]}/edit"
 
       expect(page).to have_content("Seasons List")
       expect(page).to have_content("Storms List")
