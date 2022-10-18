@@ -6,21 +6,17 @@ Rails.application.routes.draw do
   get '/seasons', to: 'seasons#index'
   get '/seasons/new', to: 'seasons#new'
   post '/seasons', to: 'seasons#create'
-
   get '/seasons/:id', to: 'seasons#show'
   get '/seasons/:id/edit', to: 'seasons#edit'
   patch '/seasons/:id', to: 'seasons#update'
-
   delete '/seasons/:id', to: 'seasons#destroy'
 
   get '/seasons/:id/storms', to: 'season_storms#index'
-
   get '/seasons/:id/storms/new', to: 'season_storms#new'
   post '/seasons/:id/storms', to: 'season_storms#create'
 
   get '/storms', to: 'storms#index'
   get '/storms/:id', to: 'storms#show'
-
   get '/storms/:id/edit', to: 'storms#edit'
   patch '/storms/:id', to: 'storms#update'
   delete '/storms/:id', to: 'storms#destroy'

@@ -1,7 +1,12 @@
 class SeasonStormsController < ApplicationController
   def index
     @season = Season.find(params[:id])
-    @storms = @season.storms.order(params[:sort])
+    wind = params[:wind_spd].to_i
+    if params[:filter] == 'true'
+      @storms = filter_by_wind_spd(@season.storms.order(params[:sort]), wind)
+    else
+      @storms = @season.storms.order(params[:sort])
+    end
   end
 
   def new

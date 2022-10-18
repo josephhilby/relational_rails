@@ -9,7 +9,7 @@ RSpec.describe 'Storms Update Page' do
 
     describe 'Then I see' do
       it '1) The name of the storm record' do
-        visit "/storms/#{@storm_sam.id}/edit"
+        visit "/storms/#{@storm_sam[:id]}/edit"
 
         expect(page).to have_content("Hurricane Sam")
       end
@@ -17,18 +17,18 @@ RSpec.describe 'Storms Update Page' do
 
     describe 'When I fill out the form and click the button "Update Storm"' do
       it '1) I am taken to /storms/:id' do
-        visit "/storms/#{@storm_sam.id}/edit"
+        visit "/storms/#{@storm_sam[:id]}/edit"
         fill_in "storm[name]", with: "Test Storm"
         fill_in "storm[storm_type]", with: 'A big storm'
         fill_in "storm[wind_spd]", with: 999
         select('No', from: 'storm[landfall]')
         click_on "Update Storm"
 
-        expect(current_path).to eq("/storms/#{@storm_sam.id}")
+        expect(current_path).to eq("/storms/#{@storm_sam[:id]}")
       end
 
       it '2) And I see the storms updated info' do
-        visit "/storms/#{@storm_sam.id}/edit"
+        visit "/storms/#{@storm_sam[:id]}/edit"
         fill_in "storm[name]", with: "Test Storm"
         fill_in "storm[storm_type]", with: 'A big storm'
         fill_in "storm[wind_spd]", with: 999

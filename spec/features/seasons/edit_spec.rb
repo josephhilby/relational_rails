@@ -12,7 +12,7 @@ RSpec.describe 'Seasons Update Page' do
 
     describe 'Then I see' do
       it '1) The name of the season record' do
-        visit "/seasons/#{@season_22.id}/edit"
+        visit "/seasons/#{@season_22[:id]}/edit"
 
         expect(page).to have_content("2022")
       end
@@ -20,7 +20,7 @@ RSpec.describe 'Seasons Update Page' do
 
     describe 'When I fill out the form click the button "Update Season"' do
       it '1) I am taken to /seasons/:id' do
-        visit "/seasons/#{@season_22.id}/edit"
+        visit "/seasons/#{@season_22[:id]}/edit"
         fill_in "season[year]", with: 2099
         fill_in "season[biggest_storm]", with: 'A big storm'
         select('No', from: 'season[fema_state_emg]')
@@ -30,7 +30,7 @@ RSpec.describe 'Seasons Update Page' do
       end
 
       it '2) And I see the seasons updated info' do
-        visit "/seasons/#{@season_22.id}/edit"
+        visit "/seasons/#{@season_22[:id]}/edit"
         fill_in "season[year]", with: 2099
         fill_in "season[biggest_storm]", with: 'A big storm'
         select('No', from: 'season[fema_state_emg]')

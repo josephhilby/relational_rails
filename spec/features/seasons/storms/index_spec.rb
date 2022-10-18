@@ -38,6 +38,12 @@ RSpec.describe 'Season_Storms Index Page' do
 
         expect(page).to have_content("Create Storm")
       end
+
+      it '4) A form that allows a selected wind speed' do
+        visit "/seasons/#{@season_21[:id]}/storms"
+
+        expect(page).to have_button("Filter")
+      end
     end
 
     describe 'When I click "Create Storm' do
@@ -46,6 +52,18 @@ RSpec.describe 'Season_Storms Index Page' do
         click_on "Create Storm"
 
         expect(current_path).to eq("/seasons/#{@season_21[:id]}/storms/new")
+      end
+    end
+
+    describe 'When I select a windspeed in that form and select "Filter"' do
+      it '1) Storms below that windspeed are removed' do
+        visit "/seasons/#{@season_21[:id]}/storms"
+        fill_in "wind_spd", with: 160
+        click_on "Filter"
+
+        expect(page).to have_content(@storm_andrew[:name])
+        expect(page).to_not have_content(@storm_bert[:name])
+        expect(page).to_not have_content(@storm_chris[:name])
       end
     end
   end

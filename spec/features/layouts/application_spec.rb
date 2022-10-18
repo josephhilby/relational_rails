@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'All Pages' do
-  before(:all) do
+  before(:each) do
+    # Must use before(:each) not (:all). In troubleshooting tests. If you xit all tests and comment out @storm_mike BUT keep @season_00. An objec is made that lingers between tests (storms/index_spec.rb).
     @season_00 = Season.create!(year: 2000, biggest_storm: "Mike", fema_state_emg: true)
     @storm_mike = @season_00.storms.create!(storm_type: "Hurricane", landfall: true, wind_spd: 155, name: "Mike")
   end
