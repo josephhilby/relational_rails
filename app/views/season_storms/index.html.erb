@@ -1,5 +1,9 @@
 <h1>All Storms in the <%= @season.year %> Hurricane Season:</h1>
-
+Filter storms by wind speed: <%= form_with url:"/seasons/#{@season.id}/storms", method: :get, local: true do |form| %>
+  <%= form.hidden_field :filter, value: true %>
+  <%= form.number_field :wind_spd, in: 1..999, step: 1, value: 100 %>
+  <%= form.submit 'Filter' %>
+<% end %><br>
 <table>
   <tr>
     <th><%= link_to "Type", :sort => "storm_type"%></th>
