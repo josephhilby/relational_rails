@@ -26,6 +26,12 @@ RSpec.describe 'Seasons Index Page' do
         expect(page).to have_content("Update 2021 Season")
         expect(page).to have_content("Update #{@season_22.year} Season")
       end
+
+      it '4) A link to season "Delete Season"' do
+        visit "/seasons"
+
+        expect(page).to have_button("Delete Season")
+      end
     end
 
     describe 'When I click "New Season"' do
@@ -47,7 +53,7 @@ RSpec.describe 'Seasons Index Page' do
     end
 
     describe 'When I click "Delete Season"' do
-      it '1) The season is deleted' do
+      xit '1) The season is deleted' do
         visit "/seasons"
         click_on "Delete"
 
@@ -55,7 +61,7 @@ RSpec.describe 'Seasons Index Page' do
         expect(page).to_not have_content("2021")
       end
 
-      it '2) And all storm records linked to that season' do
+      xit '2) And all storm records linked to that season' do
         visit "/seasons"
         click_on "Delete"
         visit "/storms"
