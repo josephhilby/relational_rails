@@ -38,6 +38,11 @@ RSpec.describe 'Storms Index Page' do
       it '4) A link to update that season "Update Storm"' do
         expect(page).to have_content("Update Storm")
       end
+
+      it '5) A link to season "Delete Storm"' do
+
+        expect(page).to have_button("Delete Storm")
+      end
     end
 
     describe 'When I click "Update Storm"' do
@@ -46,6 +51,16 @@ RSpec.describe 'Storms Index Page' do
         click_on "Update Storm", match: :first
 
         expect(current_path).to eq("/storms/#{@storm_3.id}/edit")
+      end
+    end
+
+    describe 'When I click "Delete Storm"' do
+      it '1) The storm is deleted' do
+        visit "/storms"
+        click_on "Delete Storm", match: :first
+
+        expect(current_path).to eq("/storms")
+        expect(page).to_not have_content("2021")
       end
     end
   end
