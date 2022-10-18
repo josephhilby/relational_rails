@@ -19,7 +19,7 @@
     <td>Did not make landfall</td>
   <% end %>
     <td><%= storm[:created_at] %></td>
-    <td><a href='/storms/<%= storm.id %>/edit'>Update Storm</a></td>
+    <td><%= button_to "Update Storm", "/storms/#{storm[:id]}/edit", method: :get %></td>
     <td><%= button_to "Delete Storm", "/storms/#{storm[:id]}", method: :delete %></td>
   </tr>
 <% end %>

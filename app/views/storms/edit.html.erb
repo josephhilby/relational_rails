@@ -1,28 +1,19 @@
 <h1>Update <%= "#{@storm[:storm_type]} #{@storm[:name]}" %></h1>
-<form action="/storms/<%= @storm.id %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH"/>
-  <label for='storm[season_id]'>Storm Season:</label>
-  <select name="storm[season_id]">
-    <% @seasons.each do |season| %>
-    <option value=<%="#{season[:id]}"%>><%="#{season[:year]}"%></option>
-    <% end %>
-  </select><br>
-  <label for='storm[name]'>Storm Name:</label>
-  <input type='text' name='storm[name]' value=<%="#{@storm[:name]}"%>><br>
-  <label for='storm[storm_type]'>Storm Type:</label>
-  <input type='text' name='storm[storm_type]' value=<%="#{@storm[:storm_type]}"%>><br>
-  <label for='storm[wind_spd]'>Storm Wind Speed:</label>
-  <input type="number" name="storm[wind_spd]" min="1" max="999" step="1" value=<%="#{@storm[:wind_spd]}"%> /><br>
-  <label for="storm[landfall]">Did the storm make landfall in the US?</label>
-  <select name="storm[landfall]" >
-  <% if @storm.landfall == true %>
-    <option value='true'>Yes</option>
-    <option value='false'>No</option>
+<p>Enter updates:</p>
+<%= form_with url: "/storms/#{@storm[:id]}", method: :patch, local: true do |form| %>
+  <%= form.label :year, "Season Year:" %>
+  <%= form.select :year, @seasons.map {|season| season[:year]} %><br>
+  <%= form.label :name, "Storm Name:" %>
+  <%= form.text_field :name, value: @storm[:name] %><br>
+  <%= form.label :storm_type, "Storm Type:" %>
+  <%= form.text_field :storm_type, value: @storm[:storm_type] %><br>
+  <%= form.label :wind_spd, "Peak Winds:" %>
+  <%= form.number_field :wind_spd, in: 1..999, step: 1, value: @storm[:wind_spd] %><br>
+  <%= form.label :landfall, "Did the storm make landfall in the US?:" %>
+  <% if @storm[:landfall] == true %>
+    <%= form.select :landfall, ["Yes", "No"] %><br>
   <% else %>
-    <option value='false'>No</option>
-    <option value='true'>Yes</option>
+    <%= form.select :landfall, ["No", "Yes"] %><br>
   <% end %>
-  </select><br>
-  <input type='submit'value="Update Storm"/>
-</form>
+  <%= form.submit 'Update Storm' %>
+<% end %>

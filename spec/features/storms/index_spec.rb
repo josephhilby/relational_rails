@@ -36,7 +36,8 @@ RSpec.describe 'Storms Index Page' do
       end
 
       it '4) A link to update that season "Update Storm"' do
-        expect(page).to have_content("Update Storm")
+
+        expect(page).to have_button("Update Storm")
       end
 
       it '5) A link to season "Delete Storm"' do

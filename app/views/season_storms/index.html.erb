@@ -23,6 +23,7 @@ Filter storms by wind speed: <%= form_with url:"/seasons/#{@season.id}/storms", 
     <td>Did not make landfall</td>
   <% end %>
     <td><%= storm[:created_at] %></td>
+    <td><%= button_to "Delete Storm", "/storms/#{storm[:id]}", method: :delete %></td>
   </tr>
 <% end %>
 </table>

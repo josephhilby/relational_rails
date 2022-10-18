@@ -1,5 +1,4 @@
 <h1>Seasons List:</h1>
-
 <table>
   <tr>
     <th><%= link_to "Year", :sort => "year"%></th>
@@ -9,7 +8,8 @@
   <tr>
     <td><a href='seasons/<%= season[:id] %>'><%= "#{season[:year]}" %></a></td>
     <td><%= season[:created_at]%></td>
-    <td><a href="/seasons/<%= season[:id] %>/edit">Update <%= "#{season[:year]}" %> Season</a></td>
+
+    <td><%= button_to "Update Season", "/seasons/#{season[:id]}/edit", method: :get %></td>
     <td><%= button_to "Delete Season", "/seasons/#{season[:id]}", method: :delete %></td>
   </tr>
   <% end %>

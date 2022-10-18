@@ -14,19 +14,19 @@ class SeasonStormsController < ApplicationController
   end
 
   def create
-    if params[:storm][:landfall] == 'true'
+    if params[:landfall] == 'Yes'
       landfall = true
     else
       landfall = false
     end
     season = Storm.new({
-      storm_type: params[:storm][:storm_type],
+      storm_type: params[:storm_type],
       landfall: landfall,
-      wind_spd: params[:storm][:wind_spd].to_i,
-      name: params[:storm][:name],
-      season_id: params[:storm][:season_id]
+      wind_spd: params[:wind_spd].to_i,
+      name: params[:name],
+      season_id: params[:id]
     })
     season.save
-    redirect_to "/seasons/#{params[:storm][:season_id]}/storms"
+    redirect_to "/seasons/#{params[:id]}/storms"
   end
 end

@@ -22,9 +22,9 @@ RSpec.describe 'Seasons New Page' do
 
       it '2) A new season record is created' do
         visit "/seasons/new"
-        fill_in "season[year]", with: 2010
-        fill_in "season[biggest_storm]", with: 'A big storm'
-        select('No', from: 'season[fema_state_emg]')
+        fill_in :year, with: 2010
+        fill_in :biggest_storm, with: 'A big storm'
+        select('No', from: :fema_state_emg)
 
         click_on "Create Season"
         expect(page).to have_content("2010")
