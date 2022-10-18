@@ -38,6 +38,8 @@ RSpec.describe 'Season_Storms Index Page' do
 
         expect(page).to have_content("Create Storm")
       end
+
+      it '4) '
     end
 
     describe 'When I click "Create Storm' do

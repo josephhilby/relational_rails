@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Seasons Index Page' do
   before(:each) do
-    @season_21 = Season.create!(year: 2021, biggest_storm: "Ian", fema_state_emg: true)
-    @season_22 = Season.create!(year: 2022, biggest_storm: "Sam", fema_state_emg: false)
+    @season_21 = Season.create!(year: 2021, biggest_storm: "Sam", fema_state_emg: true)
+    @storm_sam = @season_21.storms.create!(storm_type: "Hurricane", landfall: false, wind_spd: 155, name: "Sam")
+    @storm_ian = @season_21.storms.create!(storm_type: "Hurricane", landfall: true, wind_spd: 154, name: "Ian")
+    @season_22 = Season.create!(year: 2022, biggest_storm: "Ian", fema_state_emg: true)
+    @storm_andrew = @season_22.storms.create!(storm_type: "Hurricane", landfall: true, wind_spd: 180, name: "Andrew")
   end
   describe 'When I visit /seasons' do
     describe 'Then I see' do
@@ -53,17 +56,17 @@ RSpec.describe 'Seasons Index Page' do
     end
 
     describe 'When I click "Delete Season"' do
-      xit '1) The season is deleted' do
+      it '1) The season is deleted' do
         visit "/seasons"
-        click_on "Delete"
+        click_on "Delete Season", match: :first
 
         expect(current_path).to eq("/seasons")
         expect(page).to_not have_content("2021")
       end
 
-      xit '2) And all storm records linked to that season' do
+      it '2) And all storm records linked to that season' do
         visit "/seasons"
-        click_on "Delete"
+        click_on "Delete Season", match: :first
         visit "/storms"
 
         expect(page).to_not have_content("#{@storm_ian[:name]}")
