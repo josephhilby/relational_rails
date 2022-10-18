@@ -45,6 +45,25 @@ RSpec.describe 'Seasons Index Page' do
         expect(current_path).to eq("/seasons/#{@season_22[:id]}/edit")
       end
     end
+
+    describe 'When I click "Delete Season"' do
+      it '1) The season is deleted' do
+        visit "/seasons"
+        click_on "Delete"
+
+        expect(current_path).to eq("/seasons")
+        expect(page).to_not have_content("2021")
+      end
+
+      it '2) And all storm records linked to that season' do
+        visit "/seasons"
+        click_on "Delete"
+        visit "/storms"
+
+        expect(page).to_not have_content("#{@storm_ian[:name]}")
+        expect(page).to_not have_content("#{@storm_sam[:name]}")
+      end
+    end
   end
 end
 

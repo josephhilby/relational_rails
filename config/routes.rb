@@ -23,4 +23,5 @@ Rails.application.routes.draw do
 
   get '/storms/:id/edit', to: 'storms#edit'
   patch '/storms/:id', to: 'storms#update'
+  delete '/storms/:id', to: 'storms#destroy'
 end

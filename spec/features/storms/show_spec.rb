@@ -25,6 +25,13 @@ RSpec.describe 'Storms Show Page' do
 
         expect(page).to have_content("Update Storm")
       end
+
+      it '3) A link to delete the storm "Delete Storm"' do
+        visit "/storms/#{@storm_1.id}"
+
+        expect(page).to have_button("Delete Storm")
+        click_on "Delete Storm"
+      end
     end
 
     describe 'When I click "Update Storm"' do
@@ -33,6 +40,21 @@ RSpec.describe 'Storms Show Page' do
         click_on "Update Storm"
 
         expect(current_path).to eq("/storms/#{@storm_1.id}/edit")
+      end
+    end
+
+    describe 'When I click "Delete Storm"' do
+      it '1) I am taken to /storms' do
+        visit "/storms/#{@storm_1.id}"
+        click_on "Delete Storm"
+
+        expect(current_path).to eq("/storms")
+      end
+      it '2) I no longer see the deleted storm' do
+        visit "/storms/#{@storm_1.id}"
+        click_on "Delete Storm"
+
+        expect(page).to_not have_content("Sam")
       end
     end
   end
