@@ -26,8 +26,7 @@ RSpec.describe 'Seasons Index Page' do
       it '3) A link to update a Seasons record, "Update Season"' do
         visit "/seasons"
 
-        expect(page).to have_content("Update 2021 Season")
-        expect(page).to have_content("Update #{@season_22[:year]} Season")
+        expect(page).to have_button("Update Season")
       end
 
       it '4) A link to season "Delete Season"' do
@@ -49,9 +48,9 @@ RSpec.describe 'Seasons Index Page' do
     describe 'When I click "Update Season"' do
       it '1) I am taken to /seasons/edit' do
         visit "/seasons"
-        click_on "Update 2022 Season"
+        click_on "Update Season", match: :first
 
-        expect(current_path).to eq("/seasons/#{@season_22[:id]}/edit")
+        expect(current_path).to eq("/seasons/#{@season_21[:id]}/edit")
       end
     end
 

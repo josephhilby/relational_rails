@@ -1,20 +1,15 @@
 <h1>Update Hurricane Season <%= @season.year %></h1>
-<form action="/seasons/<%= @season.id %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="_method" value="PATCH">
-  <label for='season[year]'>Year:</label>
-  <input type="number" name="season[year]" min="1900" max="2099" step="1" value=<%="#{@season.year}" %>><br>
-  <label for='season[biggest_storm]'>Biggest named storm:</label>
-  <input type='text' name='season[biggest_storm]' value=<%= "#{@season.biggest_storm}" %>><br>
-  <label for="season[fema_state_emg]">Was a FEMA State of Emergency declared?</label>
-  <select name="season[fema_state_emg]" >
-  <% if @season.fema_state_emg == true %>
-    <option value="true">Yes</option>
-    <option value="false">No</option>
+<p>Enter updates:</p>
+<%= form_with url: "/seasons/#{@season[:id]}", method: :patch, local: true do |form| %>
+  <%= form.label :year, "Year:" %>
+  <%= form.number_field :year, in: 1900..2099, step: 1, value: @season[:year] %><br>
+  <%= form.label :biggest_storm, "Biggest named storm:" %>
+  <%= form.text_field :biggest_storm, value: @season[:biggest_storm] %><br>
+  <%= form.label :fema_state_emg, "Was a FEMA State of Emergency declared?:" %>
+  <% if @season[:fema_state_emg] == true %>
+    <%= form.select :fema_state_emg, ["Yes", "No"] %><br>
   <% else %>
-    <option value="false">No</option>
-    <option value="true">Yes</option>
+    <%= form.select :fema_state_emg, ["No", "Yes"] %><br>
   <% end %>
-  </select><br>
-  <input type='submit' value="Update Season"/>
-</form>
+  <%= form.submit 'Update Season' %>
+<% end %>

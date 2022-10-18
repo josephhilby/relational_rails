@@ -44,6 +44,12 @@ RSpec.describe 'Season_Storms Index Page' do
 
         expect(page).to have_button("Filter")
       end
+
+      it '5) A link to season "Delete Storm"' do
+        visit "/seasons/#{@season_21[:id]}/storms"
+
+        expect(page).to have_button("Delete Storm")
+      end
     end
 
     describe 'When I click "Create Storm' do
@@ -64,6 +70,16 @@ RSpec.describe 'Season_Storms Index Page' do
         expect(page).to have_content(@storm_andrew[:name])
         expect(page).to_not have_content(@storm_bert[:name])
         expect(page).to_not have_content(@storm_chris[:name])
+      end
+    end
+
+    describe 'When I click "Delete Storm"' do
+      it '1) The storm is deleted' do
+        visit "/seasons/#{@season_21[:id]}/storms"
+        click_on "Delete Storm", match: :first
+
+        expect(current_path).to eq("/storms")
+        expect(page).to_not have_content("Bert")
       end
     end
   end

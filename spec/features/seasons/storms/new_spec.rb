@@ -11,7 +11,7 @@ RSpec.describe 'Seasons Storms New Page' do
 
         expect(page).to have_content("Storm Name")
         expect(page).to have_content("Storm Type")
-        expect(page).to have_content("Storm Wind Speed")
+        expect(page).to have_content("Peak Winds")
         expect(page).to have_content("Did the storm make landfall in the US?")
       end
 
@@ -25,10 +25,10 @@ RSpec.describe 'Seasons Storms New Page' do
     describe 'When I fill out the form click the button "Create Storm"' do
       it '1) I am taken to /seasons/:id/storms' do
         visit "/seasons/#{@season_21[:id]}/storms/new"
-        fill_in "storm[name]", with: "Test"
-        fill_in "storm[storm_type]", with: 'Test Storm'
-        fill_in "storm[wind_spd]", with: 999
-        select('No', from: 'storm[landfall]')
+        fill_in :name, with: "Test"
+        fill_in :storm_type, with: 'Test Storm'
+        fill_in :wind_spd, with: 999
+        select('No', from: :landfall)
         click_on "Create Storm"
 
         expect(current_path).to eq("/seasons/#{@season_21[:id]}/storms")
@@ -36,10 +36,10 @@ RSpec.describe 'Seasons Storms New Page' do
 
       it '2) A new storm record is created' do
         visit "/seasons/#{@season_21[:id]}/storms/new"
-        fill_in "storm[name]", with: "Test"
-        fill_in "storm[storm_type]", with: 'Test Storm'
-        fill_in "storm[wind_spd]", with: 999
-        select('No', from: 'storm[landfall]')
+        fill_in :name, with: "Test"
+        fill_in :storm_type, with: 'Test Storm'
+        fill_in :wind_spd, with: 999
+        select('No', from: :landfall)
         click_on "Create Storm"
 
         expect(page).to have_content("Test")

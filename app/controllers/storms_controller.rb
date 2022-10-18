@@ -13,18 +13,19 @@ class StormsController < ApplicationController
   end
 
   def update
-    if params[:storm][:landfall] == 'true'
+    if params[:landfall] == 'Yes'
       landfall = true
     else
       landfall = false
     end
+    season = Season.find_by(year: params[:year])
     storm = Storm.find(params[:id])
     storm.update({
-      storm_type: params[:storm][:storm_type],
+      storm_type: params[:storm_type],
       landfall: landfall,
-      wind_spd: params[:storm][:wind_spd].to_i,
-      name: params[:storm][:name],
-      season_id: params[:storm][:season_id]
+      wind_spd: params[:wind_spd].to_i,
+      name: params[:name],
+      season_id: season[:id]
     })
     storm.save
 

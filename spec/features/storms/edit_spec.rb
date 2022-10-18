@@ -18,10 +18,10 @@ RSpec.describe 'Storms Update Page' do
     describe 'When I fill out the form and click the button "Update Storm"' do
       it '1) I am taken to /storms/:id' do
         visit "/storms/#{@storm_sam[:id]}/edit"
-        fill_in "storm[name]", with: "Test Storm"
-        fill_in "storm[storm_type]", with: 'A big storm'
-        fill_in "storm[wind_spd]", with: 999
-        select('No', from: 'storm[landfall]')
+        fill_in :name, with: "Test Storm"
+        fill_in :storm_type, with: 'A big storm'
+        fill_in :wind_spd, with: 999
+        select('No', from: :landfall)
         click_on "Update Storm"
 
         expect(current_path).to eq("/storms/#{@storm_sam[:id]}")
@@ -29,10 +29,10 @@ RSpec.describe 'Storms Update Page' do
 
       it '2) And I see the storms updated info' do
         visit "/storms/#{@storm_sam[:id]}/edit"
-        fill_in "storm[name]", with: "Test Storm"
-        fill_in "storm[storm_type]", with: 'A big storm'
-        fill_in "storm[wind_spd]", with: 999
-        select('No', from: 'storm[landfall]')
+        fill_in :name, with: "Test Storm"
+        fill_in :storm_type, with: 'A big storm'
+        fill_in :wind_spd, with: 999
+        select('No', from: :landfall)
         click_on "Update Storm"
 
         expect(page).to have_content("Test Storm")
