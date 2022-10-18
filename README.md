@@ -17,6 +17,7 @@ This was the initial rails project given to me while at the Turing School of Sof
 ### Built With
 
 * Ruby
+* Rails
 
 <!-- GETTING STARTED
 ## Getting Started -->
