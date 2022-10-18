@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/josephhilby/relational_rails">
-    <img src="images/relational_rails.png" alt="Logo" width="600" height="390">
+    <img src="images/relational_rails.png" alt="Logo" width="600" height="350">
   </a>
 
 <h1 align="center">Relational Rails</h1>
