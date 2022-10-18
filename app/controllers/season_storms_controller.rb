@@ -3,7 +3,7 @@ class SeasonStormsController < ApplicationController
     @season = Season.find(params[:id])
     wind = params[:wind_spd].to_i
     if params[:filter] == 'true'
-      @storms = filter_by_wind_spd(@season.storms.order(params[:sort]), wind)
+      @storms = @season.storms.order(params[:sort]).filter_by_wind_spd(wind)
     else
       @storms = @season.storms.order(params[:sort])
     end
