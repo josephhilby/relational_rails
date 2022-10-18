@@ -13,8 +13,8 @@ RSpec.describe 'Seasons Index Page' do
       it '1) The name of each season record in the system' do
         visit "/seasons"
 
-        expect(page).to have_content(@season_21.year)
-        expect(page).to have_content(@season_22.year)
+        expect(page).to have_content(@season_21[:year])
+        expect(page).to have_content(@season_22[:year])
       end
 
       it '2) A link to create a new Seasons record, "New Season"' do
@@ -27,7 +27,7 @@ RSpec.describe 'Seasons Index Page' do
         visit "/seasons"
 
         expect(page).to have_content("Update 2021 Season")
-        expect(page).to have_content("Update #{@season_22.year} Season")
+        expect(page).to have_content("Update #{@season_22[:year]} Season")
       end
 
       it '4) A link to season "Delete Season"' do
@@ -59,7 +59,7 @@ RSpec.describe 'Seasons Index Page' do
       it '1) The season is deleted' do
         visit "/seasons"
         click_on "Delete Season", match: :first
-        save_and_open_page
+
         expect(current_path).to eq("/seasons")
         expect(page).to_not have_content("2021")
       end
