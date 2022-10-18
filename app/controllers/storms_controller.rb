@@ -30,4 +30,10 @@ class StormsController < ApplicationController
 
     redirect_to "/storms/#{params[:id]}"
   end
+
+  def destroy
+    # binding.pry
+    Storm.destroy(params[:id])
+    redirect_to '/storms'
+  end
 end
